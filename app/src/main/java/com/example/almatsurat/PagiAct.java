@@ -10,9 +10,15 @@ import com.example.almatsurat.Adapter.AdapterPagi;
 
 public class PagiAct extends AppCompatActivity {
 
+    //ViewPager menggunakan objek PagerAdapter sebagai persediaan untuk halaman baru yang akan ditampilkan,
+    // sehingga PagerAdapter akan menggunakan class fragmen yang dibuat sebelumnya.
     PagerAdapter adapter;
+
+    //fitur untuk membagi konten yang panjang pada android menjadi konten yang ter bagi menjadi beberapa halaman.
+    //memubuat slider/slideshow pada aplikasi
     ViewPager viewPager;
 
+    //menyimpan data di string array
     String[] judul={
             "[1] Membaca Ayat Kursi"
             ,"[2] Membaca surat Al Ikhlas, Al Falaq, An Naas"
@@ -34,6 +40,7 @@ public class PagiAct extends AppCompatActivity {
             ,"[18]"
     };
 
+    //menyimpan data di string array
     String arab[] ={
             //ayat kursi
             "اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ، لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلاَّ بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ\n"
@@ -89,6 +96,7 @@ public class PagiAct extends AppCompatActivity {
 
     };
 
+    //menyimpan data di string array
     String terjemahan[] ={
             "“Allah, tidak ada Tuhan (yang berhak disembah) melainkan Dia, yang hidup kekal lagi terus menerus mengurus (makhluk-Nya). Dia tidak mengantuk dan tidak tidur. Kepunyaan-Nya apa yang di langit dan di bumi. Tiada yang dapat memberi syafa’at di sisi-Nya tanpa seizin-Nya. Dia mengetahui apa-apa yang di hadapan mereka dan di belakang mereka. Mereka tidak mengetahui apa-apa dari ilmu Allah melainkan apa yang dikehendaki-Nya. Kursi Allah meliputi langit dan bumi. Dia tidak merasa berat memelihara keduanya. Dan Dia Maha Tinggi lagi Maha besar.” (QS. Al Baqarah: 255) (Dibaca 1 x)\n" +
                     "\n" +
@@ -175,9 +183,13 @@ public class PagiAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagi);
 
+        //membinding viewPager ke layout activity_Pagi.xml agar bisa di slide
         viewPager = findViewById(R.id.pagi);
 
+        //mengirimkan data ke AdapterPagi dengan data dri string[]
         adapter = new AdapterPagi(PagiAct.this, judul, arab, terjemahan);
+
+        //set isi data adapter agar bisa di slide
         viewPager.setAdapter(adapter);
     }
 }

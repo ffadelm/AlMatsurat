@@ -15,11 +15,21 @@ import com.example.almatsurat.R;
 
 public class AdapterPagi extends PagerAdapter {
 
+    /*LayoutInflater di gunakan untuk untuk menjadikan atau
+    mengconvert file layout xml ,sebagai View object baru ,di dalam layout utama.*/
+
+    /*jadi nantinya Untuk itu ,kita harus menggunakan LayoutInflater ,agar
+    layout yang berisi konten (item_list.xml),dapat ditampilkan di dalam layout utama (actvity_main.xml).
+    Bisa kita sebut juga layout konten ,bertugas menjadi anak atau ChildView ,
+    bagi layout  utama ,yang bertugas sebagai ParentView*/
+    LayoutInflater inflater;
+
+    //data dari string array
     String judul[];
     String arab[];
     String terjemahan[];
+    //untuk memberikan akses ke class PagiAct
     PagiAct context;
-    LayoutInflater inflater;
 
     @Override
     public int getCount() {
@@ -31,6 +41,8 @@ public class AdapterPagi extends PagerAdapter {
         return view==object;
     }
 
+    /* Kata kunci this dipergunakan pada pembuatan kelas dan digunakan untuk menyatakan objek sekarang.
+     * Untuk menghindari variabel yang sama antara variabel class dengan variabel property.*/
     public AdapterPagi(PagiAct pagiAct, String[] judul, String[] arab, String[] terjemahan ){
         this.context = pagiAct;
         this.judul = judul;
@@ -38,17 +50,24 @@ public class AdapterPagi extends PagerAdapter {
         this.terjemahan = terjemahan;
     }
 
+    /*class instantiateItem disini merupakan class yang berhubungan dengan PagerAdapter
+    * jadi halaman yang telah di berikan posisi (int Position), dan kemudian adaptor akan bertanggungjawan untuk
+    * menambahkan tampilan ke wadah yang di berikan (ViewGroup container) */
     public Object instantiateItem(ViewGroup container, int position){
+        //menambahkan konten layout atau layout view_pagi
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.view_pagi,container,false);
 
+        //membinding TextVIew yang ada di layout view_pagi
         TextView Judul = view.findViewById(R.id.judul);
         TextView Arab = view.findViewById(R.id.tulisanarab);
         TextView Terjemahan = view.findViewById(R.id.tulisanterjemahan);
 
+        //meletakkan data data yang ada di string[] sesuai posisinya
         Judul.setText(judul[position]);
         Arab.setText(arab[position]);
         Terjemahan.setText(terjemahan[position]);
+        //meletakan wadah ke view atau ke view_pagi
         container.addView(view);
 
         return view;
@@ -56,6 +75,8 @@ public class AdapterPagi extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+
+        //meremove bagian object layout atau activity_pagi
         container.removeView((LinearLayout)object);
     }
 }

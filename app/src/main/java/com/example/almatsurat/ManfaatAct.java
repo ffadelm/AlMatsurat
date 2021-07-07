@@ -11,13 +11,20 @@ import com.example.almatsurat.Adapter.AdapterPagi;
 
 public class ManfaatAct extends AppCompatActivity {
 
+    //ViewPager menggunakan objek PagerAdapter sebagai persediaan untuk halaman baru yang akan ditampilkan,
+    // sehingga PagerAdapter akan menggunakan class fragmen yang dibuat sebelumnya.
     PagerAdapter adapter;
+
+    //fitur untuk membagi konten yang panjang pada android menjadi konten yang ter bagi menjadi beberapa halaman.
+    //memubuat slider/slideshow pada aplikasi
     ViewPager viewPager;
 
+    //menyimpan data di string array
     String[] judulmanfaat={
             "Manfaat Membaca Dzikir Pagi & Petang"
     };
 
+    //menyimpan data di string array
     String[] isimanfaat={
             "1. Disempurnakan Nikmat\n\n" +
                     "Berdasarkan hadis Nabi yang telah diriwayatkan oleh Ibnu Saunni telah dijelaskan bahwa barang siapa yang membaca ‘Allahumma inniasbahtu minka fi nikmati’ sebanyak tiga kali saat pagi dan sore hari maka Allah Swt. akan menyempurnakan nikmat atas dirinya, sehingga seseorang akan mendapat banyak limpahan kenikmatan baik itu dari segi rohani maupun jasmani.\n" +
@@ -42,9 +49,13 @@ public class ManfaatAct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manfaat);
 
+        //membinding viewPager ke layout activity_Manfaat.xml agar bisa di slide
         viewPager = findViewById(R.id.manfaat);
 
+        //mengirimkan data ke AdapterManfaat dengan data dri string[]
         adapter = new AdapterManfaat(ManfaatAct.this, judulmanfaat, isimanfaat);
+
+        //set isi data adapter agar bisa di slide
         viewPager.setAdapter(adapter);
     }
 }
