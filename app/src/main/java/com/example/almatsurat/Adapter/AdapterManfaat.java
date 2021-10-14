@@ -77,7 +77,7 @@ public class AdapterManfaat extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
 
-        //meremove bagian object layout atau activity_pagi
+        //meremove bagian object layout atau activity_manfaat
         container.removeView((LinearLayout)object);
     }
 }
